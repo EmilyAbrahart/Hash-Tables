@@ -58,6 +58,7 @@ class HashTable:
         index = self._hash_mod(key)
         if not self.storage[index]:
             self.storage[index] = LinkedPair(key, value)
+            self.count += 1
         else:
             current_node = self.storage[index]
             while current_node.next is not None:
@@ -81,6 +82,7 @@ class HashTable:
             print("ERROR: Key not found.")
             return
         self.storage[index] = self.storage[index].next
+        self.count -= 1
 
     def retrieve(self, key):
         '''
